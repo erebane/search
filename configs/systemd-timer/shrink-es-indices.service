@@ -1,0 +1,12 @@
+# /etc/systemd/system/shrink-es-indices.service
+
+[Unit]
+Description=Shrink elasticsearch indices
+Wants=shrink-es-indices.timer
+
+[Service]
+ExecStart=/usr/local/bin/curator --config /opt/hajaannu/config/elasticsearch/curator/curator.yml /home/human/sfielding/go/src/code.hajaan.nu/sfielding/search/configs/curator/actions/shrink-indices.yml
+Slice=es-worker.slice
+
+[Install]
+WantedBy=multi-user.target
