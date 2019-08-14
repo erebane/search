@@ -15,7 +15,7 @@ import (
 	//"reflect"
 )
 
-const esHost string = "http://search.hajaan.nu:9200"
+const esHost string = "http://shontaya-ashburn.perneka.hajaan.nu:9200"
 
 type Events struct {
 	Data []Event `json:"data"`
