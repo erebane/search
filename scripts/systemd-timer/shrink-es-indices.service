@@ -5,7 +5,7 @@ Description=Shrink elasticsearch indices
 Wants=shrink-es-indices.timer
 
 [Service]
-ExecStart=/usr/local/bin/curator --config /opt/search/configs/curator/curator.yml /opt/search/configs/curator/actions/shrink-filebeat.yml
+ExecStart=/usr/bin/curator --config /opt/search/scripts/curator/curator.yml /opt/search/scripts/curator/actions/shrink-filebeat.yml
 Slice=es-worker.slice
 
 [Install]
