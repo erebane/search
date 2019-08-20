@@ -1,0 +1,14 @@
+# /etc/systemd/system/shrink-es-indices.timer
+
+[Unit]
+Description=Shrink elasticsearch indices
+Requires=shrink-es-indices.service
+
+[Timer]
+Unit=shrink-es-indices.service
+OnUnitInactiveSec=60m
+RandomizedDelaySec=60m
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

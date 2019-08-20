@@ -1,0 +1,12 @@
+# /etc/systemd/system/shrink-es-indices.service
+
+[Unit]
+Description=Shrink elasticsearch indices
+Wants=shrink-es-indices.timer
+
+[Service]
+ExecStart=/usr/local/bin/curator --config /opt/search/configs/curator/curator.yml /opt/search/configs/curator/actions/shrink-filebeat.yml
+Slice=es-worker.slice
+
+[Install]
+WantedBy=multi-user.target

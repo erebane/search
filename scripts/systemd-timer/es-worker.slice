@@ -1,0 +1,10 @@
+# /etc/systemd/system/es-worker.slice
+
+[Unit]
+Description=Limited resources Slice
+DefaultDependencies=no
+Before=slices.target
+
+[Slice]
+CPUQuota=30%
+MemoryLimit=1G
