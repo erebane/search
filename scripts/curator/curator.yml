@@ -15,7 +15,7 @@ client:
   aws_region:
   ssl_no_validate: False
   http_auth:
-  timeout: 30
+  timeout: 500
   master_only: False
 
 logging:
