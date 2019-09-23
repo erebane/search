@@ -9,7 +9,7 @@ actions:
   1:
     action: shrink
     description: >-
-      Shrink beats indices older than 2 days on the node with the most
+      Shrink beats and .monitor indices older than 2 days on the node with the most
       available space. Delete each source index after successful shrink,
       then reroute the shrunk index with the provided parameters.
     options:
@@ -40,7 +40,7 @@ actions:
     filters:
     - filtertype: pattern
       kind: regex
-      value: '^(filebeat-|packetbeat-|metricbeat-).*$'
+      value: '^(filebeat-|packetbeat-|metricbeat-|.monitor).*$'
     - filtertype: age
       source: creation_date
       direction: older
