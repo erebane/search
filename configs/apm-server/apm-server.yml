@@ -4,7 +4,7 @@
 
 apm-server:
   # Defines the host and port the server is listening on. Use "unix:/path/to.sock" to listen on a unix domain socket.
-  host: "localhost:8200"
+  host: "10.24.0.74:8224"
 
   # Maximum permitted size in bytes of a request's header accepted by the server to be processed.
   #max_header_size: 1048576
@@ -198,6 +198,7 @@ apm-server:
   #agent.config.cache.expiration: 30s
 
   #kibana:
+  kibana:
     # For APM Agent configuration in Kibana, enabled must be true.
     #enabled: false
     enabled: true
