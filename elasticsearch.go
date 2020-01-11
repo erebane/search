@@ -106,7 +106,7 @@ func GetDataFlows() (dataFlow DataFlow) {
 	searchHandler := CreateSearchHandler()
 	client := searchHandler.client
 
-	file, e := ioutil.ReadFile("/opt/hajaannu/config/elasticsearch/search/packetbeat-netflow.json")
+	file, e := ioutil.ReadFile("/opt/search/assets/packetbeat/netflow.json")
 	if e != nil {
 		fmt.Printf("File error: %v\n", e)
 		os.Exit(1)
@@ -119,7 +119,7 @@ func GetDataFlows() (dataFlow DataFlow) {
 		panic(err)
 	}
 	var flowResult DataFlowSearchResult
-	json.Unmarshal(*res.Aggregations["3"], &flowResult)
+	json.Unmarshal(res.Aggregations["3"], &flowResult)
 	for _, ipBucket := range flowResult.Buckets {
 		source := Source{
 			IP: ipBucket.Key,
@@ -163,12 +163,12 @@ func GetEvents() (events Events) {
 	if err != nil {
 		// Handle error
 	}
-	if searchResult.Hits.TotalHits > 0 {
+	if searchResult.TotalHits() > 0 {
 		// Iterate through results
 		for _, hit := range searchResult.Hits.Hits {
 			// Deserialize hit.Source into a Wekan struct
 			var t Wekan
-			err := json.Unmarshal(*hit.Source, &t)
+			err := json.Unmarshal(hit.Source, &t)
 			if err != nil {
 				// Deserialization failed
 			}
