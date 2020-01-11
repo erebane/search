@@ -3,34 +3,34 @@
     "3": {
       "terms": {
         "field": "source.ip",
-        "size": 5,
         "order": {
           "1": "desc"
-        }
+        },
+        "size": 5
       },
       "aggs": {
         "1": {
           "sum": {
-            "field": "source.stats.net_bytes_total"
+            "field": "source.bytes"
           }
         },
         "4": {
           "terms": {
-            "field": "dest.ip",
-            "size": 5,
+            "field": "destination.ip",
             "order": {
               "1": "desc"
-            }
+            },
+            "size": 5
           },
           "aggs": {
             "1": {
               "sum": {
-                "field": "source.stats.net_bytes_total"
+                "field": "source.bytes"
               }
             },
             "2": {
               "sum": {
-                "field": "dest.stats.net_bytes_total"
+                "field": "destination.bytes"
               }
             }
           }
@@ -39,19 +39,6 @@
     }
   },
   "size": 0,
-  "highlight": {
-    "pre_tags": [
-      "@kibana-highlighted-field@"
-    ],
-    "post_tags": [
-      "@/kibana-highlighted-field@"
-    ],
-    "fields": {
-      "*": {}
-    },
-    "require_field_match": false,
-    "fragment_size": 2147483647
-  },
   "_source": {
     "excludes": []
   },
@@ -60,36 +47,86 @@
   ],
   "script_fields": {},
   "docvalue_fields": [
-    "@timestamp",
-    "last_time",
-    "start_time",
-    "tls.client_certificate.not_after",
-    "tls.client_certificate.not_before",
-    "tls.server_certificate.not_after",
-    "tls.server_certificate.not_before"
+    {
+      "field": "@timestamp",
+      "format": "date_time"
+    },
+    {
+      "field": "event.created",
+      "format": "date_time"
+    },
+    {
+      "field": "event.end",
+      "format": "date_time"
+    },
+    {
+      "field": "event.start",
+      "format": "date_time"
+    },
+    {
+      "field": "file.accessed",
+      "format": "date_time"
+    },
+    {
+      "field": "file.created",
+      "format": "date_time"
+    },
+    {
+      "field": "file.ctime",
+      "format": "date_time"
+    },
+    {
+      "field": "file.mtime",
+      "format": "date_time"
+    },
+    {
+      "field": "process.start",
+      "format": "date_time"
+    },
+    {
+      "field": "tls.client_certificate.not_after",
+      "format": "date_time"
+    },
+    {
+      "field": "tls.client_certificate.not_before",
+      "format": "date_time"
+    },
+    {
+      "field": "tls.server_certificate.not_after",
+      "format": "date_time"
+    },
+    {
+      "field": "tls.server_certificate.not_before",
+      "format": "date_time"
+    }
   ],
   "query": {
     "bool": {
-      "must": [
+      "must": [],
+      "filter": [
         {
-          "query_string": {
-            "analyze_wildcard": true,
-            "default_field": "*",
-            "query": "*"
+          "match_all": {}
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "match": {
+                  "type": "flow"
+                }
+              }
+            ],
+            "minimum_should_match": 1
           }
         },
         {
-          "query_string": {
-            "query": "type: flow",
-            "analyze_wildcard": true,
-            "default_field": "*"
-          }
+          "match_all": {}
         },
         {
           "range": {
             "@timestamp": {
-                "gte" : "now-1d/d",
-                "lt" :  "now/d"
+              "gte" : "now-1d/d",
+              "lt" :  "now/d"
             }
           }
         }
