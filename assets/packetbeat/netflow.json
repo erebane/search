@@ -131,7 +131,6 @@
           }
         }
       ],
-      "filter": [],
       "should": [],
       "must_not": []
     }
