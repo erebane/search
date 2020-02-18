@@ -1,0 +1,33 @@
+{
+    "template" : "packetbeat*",
+    "settings":{
+	"index":{
+	    "analysis":{
+		"analyzer":{
+		    "analyzer_keyword":{
+			"tokenizer":"keyword"
+		    },
+		    "analyzer_path":{
+			"tokenizer":"path_hierarchy"
+		    }
+		}
+	    }
+	}
+    },
+    "mappings" : {
+    	"_default_" : {
+	    "dynamic_templates" : [
+		{
+		    "string" : {
+			"match" : "*hostname",
+			"mapping" : {
+			    "type" : "string",
+			    "analyzer" : "analyzer_keyword"
+			}
+		    }
+		}
+	    ]
+	}
+    }
+}
+

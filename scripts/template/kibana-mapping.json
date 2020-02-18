@@ -1,0 +1,183 @@
+{
+  ".kibana" : {
+    "aliases" : { },
+    "mappings" : {
+      "url" : {
+        "_timestamp" : { },
+        "properties" : {
+          "accessCount" : {
+            "type" : "long"
+          },
+          "accessDate" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "createDate" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "url" : {
+            "type" : "string"
+          }
+        }
+      },
+      "dashboard" : {
+        "_timestamp" : { },
+        "properties" : {
+          "description" : {
+            "type" : "string"
+          },
+          "hits" : {
+            "type" : "integer"
+          },
+          "kibanaSavedObjectMeta" : {
+            "properties" : {
+              "searchSourceJSON" : {
+                "type" : "string"
+              }
+            }
+          },
+          "optionsJSON" : {
+            "type" : "string"
+          },
+          "panelsJSON" : {
+            "type" : "string"
+          },
+          "timeFrom" : {
+            "type" : "string"
+          },
+          "timeRestore" : {
+            "type" : "boolean"
+          },
+          "timeTo" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "uiStateJSON" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "index-pattern" : {
+        "_timestamp" : { },
+        "properties" : {
+          "fieldFormatMap" : {
+            "type" : "string"
+          },
+          "fields" : {
+            "type" : "string"
+          },
+          "intervalName" : {
+            "type" : "string"
+          },
+          "timeFieldName" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          }
+        }
+      },
+      "config" : {
+        "_timestamp" : { },
+        "properties" : {
+          "buildNum" : {
+            "type" : "long"
+          },
+          "dashboard:defaultDarkTheme" : {
+            "type" : "boolean"
+          },
+          "defaultIndex" : {
+            "type" : "string"
+          }
+        }
+      },
+      "visualization" : {
+        "_timestamp" : { },
+        "properties" : {
+          "description" : {
+            "type" : "string"
+          },
+          "kibanaSavedObjectMeta" : {
+            "properties" : {
+              "searchSourceJSON" : {
+                "type" : "string"
+              }
+            }
+          },
+          "savedSearchId" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "uiStateJSON" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "integer"
+          },
+          "visState" : {
+            "type" : "string"
+          }
+        }
+      },
+      "search" : {
+        "_timestamp" : { },
+        "properties" : {
+          "columns" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "hits" : {
+            "type" : "integer"
+          },
+          "kibanaSavedObjectMeta" : {
+            "properties" : {
+              "searchSourceJSON" : {
+                "type" : "string"
+              }
+            }
+          },
+          "sort" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "index" : {
+        "creation_date" : "1446290024897",
+        "legacy" : {
+          "routing" : {
+            "hash" : {
+              "type" : "org.elasticsearch.cluster.routing.DjbHashFunction"
+            },
+            "use_type" : "false"
+          }
+        },
+        "number_of_shards" : "1",
+        "number_of_replicas" : "1",
+        "uuid" : "m3uE0mTJS_aGSYlpF57iJA",
+        "version" : {
+          "created" : "1070299",
+          "upgraded" : "2000099"
+        }
+      }
+    },
+    "warmers" : { }
+  }
+}

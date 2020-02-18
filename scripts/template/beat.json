@@ -1,0 +1,35 @@
+{
+    "template" : "*beat*",
+    "settings":{
+	"index":{
+	    "number_of_shards" : 5,
+	    "number_of_replicas": 0,
+	    "analysis":{
+		"analyzer":{
+		    "analyzer_keyword":{
+			"tokenizer":"keyword"
+		    },
+		    "analyzer_path":{
+			"tokenizer":"path_hierarchy"
+		    }
+		}
+	    }
+	}
+    },
+    "mappings" : {
+    	"_default_" : {
+	    "dynamic_templates" : [
+		{
+		    "string" : {
+			"match" : "*hostname",
+			"mapping" : {
+			    "type" : "string",
+			    "analyzer" : "analyzer_keyword"
+			}
+		    }
+		}
+	    ]
+	}
+    }
+}
+

@@ -1,0 +1,20 @@
+{
+    "template" : "wiki-*",
+    "settings":{
+	"index":{
+	    "number_of_shards" : 5,
+	    "number_of_replicas": 0,
+	    "analysis":{
+		"analyzer":{
+		    "analyzer_keyword":{
+			"tokenizer":"keyword"
+		    },
+		    "analyzer_path":{
+			"tokenizer":"path_hierarchy"
+		    }
+		}
+	    }
+	}
+    }
+}
+

@@ -1,0 +1,81 @@
+{
+    "template" : "filebeat*",
+    "settings":{
+	"index":{
+	    "analysis":{
+		"analyzer":{
+		    "analyzer_keyword":{
+			"tokenizer":"keyword"
+		    },
+		    "analyzer_path":{
+			"tokenizer":"path_hierarchy"
+		    }
+		}
+	    }
+	}
+    },
+    "mappings" : {
+    	"_default_" : {
+	    "properties": {
+		"@timestamp": {
+		    "type": "date"
+		},
+		"fail2ban": {
+		    "properties": {
+			"geoip": {
+			    "properties": {
+				"city_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"continent_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"country_iso_code": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"location": {
+				    "type": "geo_point"
+				},
+				"region_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				}
+			    }
+			}
+		    }
+		},
+		"ufw": {
+		    "properties": {
+			"geoip": {
+			    "properties": {
+				"city_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"continent_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"country_iso_code": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				},
+				"location": {
+				    "type": "geo_point"
+				},
+				"region_name": {
+				    "ignore_above": 1024,
+				    "type": "keyword"
+				}
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+}
+

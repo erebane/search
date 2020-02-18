@@ -1,0 +1,17 @@
+{
+  "properties":{
+    "content":{
+      "type":"text",
+      "analyzer":"finnish"
+    },
+    "category":{
+      "type":"text",
+      "analyzer":"finnish",
+      "fields":{
+	"raw":{
+	  "type":"keyword"
+	}
+      }
+    }
+  }
+}
