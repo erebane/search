@@ -171,7 +171,8 @@ output.elasticsearch:
 processors:
   - add_host_metadata: ~
   - add_cloud_metadata: ~
-  - drop_event:
+processors:
+- drop_event:
      when:
         equals:
 	  user.name: "boinc"
